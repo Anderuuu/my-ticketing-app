@@ -5,6 +5,7 @@ import Link from 'next/link'
 import BackButton from '@/components/BackButton'
 import CreateEventForm from '@/components/CreateEventsForm'
 import { Calendar, TicketIcon, Trash2 } from 'lucide-react'
+import { Event } from '@prisma/client'
 
 export const dynamic = 'force-dynamic'
 
@@ -32,8 +33,8 @@ export default async function Dashboard() {
         {events.length === 0 ? (
           <p className="text-center text-gray-500 py-12">No events created yet.</p>
         ) : (
-          events.map(event => (
-            <div key={event.id} className="flex flex-col md:flex-row md:items-center justify-between p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-300 transition gap-4">
+          events.map((event) => (
+    <div key={event.id} className="flex flex-col md:flex-row md:items-center justify-between p-5 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-300 transition gap-4">
               
               <Link href={`/event/${event.id}`} className="flex-1 block group">
                 <h3 className="text-xl font-bold group-hover:text-blue-600 transition text-gray-900">{event.name}</h3>
